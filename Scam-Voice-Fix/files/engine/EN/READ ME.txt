@@ -1,0 +1,69 @@
+﻿SCAM WITH YOUR FRIENDS - RUSSIAN VOICE FIX
+Prepared 17 October 2026. Unofficial, local fix for Steam build 25996926.
+
+INSTALL
+1. Close the game.
+2. Right-click the ZIP > Extract All. Open the extracted folder.
+3. Double-click "1 - Install.cmd" and wait for the green DONE message.
+4. Start the game normally through Steam. Use Russian call language.
+   Try two NPC replies to confirm it sounds good while playing.
+
+Keep the files folder beside the two buttons. Do not run from inside the ZIP.
+No special game folder is needed. The installer finds Steam automatically.
+If it cannot find the game, it asks you to select its folder.
+
+UNDO
+Close the game. Double-click "2 - Undo.cmd".
+This restores the original game DLL and your previous Qwen/FPS settings.
+Backups stay in %LOCALAPPDATA%\ScamVoiceFix.
+
+IF A YELLOW STOPPED MESSAGE APPEARS
+Read the short reason. Send a screenshot to the person who gave you this kit.
+The installer refuses unknown/newer game versions and different existing mods.
+It also stops if the voice preparation test is too slow.
+If voice models are missing, let the game download Qwen first, then close it
+and try again. This kit does not download models itself.
+If access to the game folder is denied, installation cannot complete; ask for
+help rather than changing Windows folder permissions or security settings.
+
+COMPATIBILITY
+This kit targets the NVIDIA shader-cache problem, tested on an RTX 3060 12 GB.
+This game build requires a supported GPU with at least 8 GB VRAM, about 16 GB
+system RAM, at least 6 GB free RAM and four CPU threads for Qwen.
+This kit checks NVIDIA GPUs only. AMD/Intel PCs need separate investigation.
+Performance with the game running can vary. Multiplayer has not been tested.
+Every player affected by this problem needs their own local fix; hosting alone
+does not apply it to friends' PCs.
+
+WHAT IT DOES
+- Verifies the exact installed DLL, official speech runtime and model hashes.
+- Prepares the normal GPU cache using the game's own QwenTtsWorker.exe.
+  It uses an included game NPC voice and a fixed Russian test sentence.
+- Checks another fresh worker before applying the patch.
+- Applies the exact game DLL patch already tested in-game on the original PC.
+  The patch removes four Steam NVIDIA shader-cache environment overrides and
+  disables Steam Vulkan overlay/caching layers only for the Qwen speech worker.
+  It also preserves the diagnostic logging used to verify the fix.
+- Enables Qwen for non-English speech and sets a 60 FPS game cap.
+- Saves the original DLL and these two preferences for Undo.
+
+The original five-second game speech timeout is unchanged. No cloud account,
+API key or subscription is needed. There is no network code, microphone access,
+scheduled task, background service, downloaded mod or security-setting change.
+PowerShell's execution-policy option applies only to the installer process.
+The source scripts are included for inspection. No custom EXE is included.
+The patch data reconstructs only the exact verified DLL from the supported
+original; it is not a general updater. Checksums detect corruption, not author
+identity. This is an unsigned private helper, not an official Steam release.
+
+AFTER UPDATES
+Steam updates or Verify Integrity can replace the patch. The installer will
+refuse a changed DLL; obtain a kit checked against that version instead.
+If Steam restores the same original version, run Undo, then Install again.
+After a GPU driver update/cache cleanup, rerun Install to prepare the cache.
+Do not distribute raw patched DLLs to people on different game versions.
+
+SUPPORTED ORIGINAL DLL SHA256
+53BD673F796EA21F8B1512C3F113E6BB1997CE62665AB3EF2C1A72B4BED490EC
+RESULTING PATCHED DLL SHA256
+27C1332662B862A2DED30370D36294C20AEAAA9847260FDA4FF4DEA82B06312D

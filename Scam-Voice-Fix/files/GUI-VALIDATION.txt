@@ -1,0 +1,19 @@
+﻿GUI validation - 17 October 2026
+
+The GUI uses the same Fix-Core.ps1, Warmup.cs, binary patch, runtime manifest
+and checksum manifest as each tested language kit. Exact file hashes match.
+Only the entry script adds progress markers and a structured result for the GUI.
+
+Checks completed:
+- C# interface compilation and PowerShell syntax.
+- English and Russian control rendering and text bounds at normal/minimum size.
+- Real read-only compatibility checks through the GUI process controller.
+- Structured success results and recovery of controls after errors.
+- Real incomplete-package errors returned in each language.
+- Rendered installed/progress states (no new game installation was needed).
+- Translation and underlying patch remain consistent with the tested kits.
+
+Native desktop automation was unavailable. These checks used direct rendering
+of the application's controls and its process controller; they were not a live
+mouse/keyboard walkthrough. High-DPI displays and other PCs have not been tested.
+The original patch already passed in-game Russian listening tests on this PC.

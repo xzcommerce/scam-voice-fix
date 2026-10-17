@@ -1,0 +1,56 @@
+﻿SCAM VOICE FIX / ИСПРАВЛЕНИЕ ОЗВУЧКИ
+
+ENGLISH
+1. Right-click the ZIP > Extract All.
+2. Open the extracted folder and double-click START.cmd.
+3. Choose English or Русский at the top of the window.
+4. Close the game, then click Fix voice. Keep the window open until it finishes.
+5. Start the game through Steam, select Russian call language and try two replies.
+
+Undo changes restores the original game file and previous Qwen/FPS settings.
+It becomes available after this installer creates a backup.
+Check compatibility only does not change game files or settings.
+Details / copy log shows the messages to copy when asking for help.
+
+Keep the files folder beside START.cmd. Do not run from inside the ZIP.
+The helper finds Steam automatically. If asked, select your game folder.
+This is an unofficial fix for Steam build 25996926 on supported NVIDIA GPUs
+with at least 8 GB VRAM, about 16 GB system RAM and 6 GB free RAM.
+It prepares the speech cache, enables Qwen for non-English voices and sets
+a 60 FPS game cap. Original files and settings are backed up before changes.
+Every affected player needs the fix locally; installing on the host is not enough.
+Steam updates may replace the patch. Unknown game versions are refused.
+Other PCs/hardware and multiplayer still need their own in-game listening test.
+
+РУССКИЙ
+1. Нажмите правой кнопкой по ZIP-архиву > «Извлечь все».
+2. Откройте распакованную папку и дважды нажмите START.cmd.
+3. Выберите English или Русский в верхней части окна.
+4. Закройте игру и нажмите «Исправить озвучку». Дождитесь завершения.
+5. Запустите игру через Steam, выберите русский язык звонков и проверьте два ответа.
+
+«Отменить изменения» восстанавливает исходный файл игры и прежние настройки
+Qwen/FPS. Кнопка доступна после создания резервной копии этим установщиком.
+«Проверить совместимость» не меняет файлы игры и настройки.
+«Подробности / журнал» позволяет скопировать сообщения для обращения за помощью.
+
+Оставьте папку files рядом с START.cmd. Не запускайте прямо из архива.
+Помощник найдёт Steam автоматически. Если появится запрос, выберите папку игры.
+Это неофициальное исправление для Steam-сборки 25996926 и поддерживаемых NVIDIA
+с минимум 8 ГБ видеопамяти, около 16 ГБ ОЗУ и 6 ГБ свободной ОЗУ.
+Оно подготавливает кэш, включает Qwen для иностранных языков и ограничивает
+игру до 60 FPS. Исходные файлы и настройки сохраняются перед изменениями.
+Исправление нужно каждому игроку с проблемой: установки у хоста недостаточно.
+Обновления Steam могут заменить патч. Неизвестные версии игры не поддерживаются.
+Другие ПК, оборудование и мультиплеер требуют отдельной проверки озвучки в игре.
+
+SOURCE AND BACKUPS / ИСХОДНИКИ И КОПИИ
+Backups / Резервные копии: %LOCALAPPDATA%\ScamVoiceFix
+Interface source / Исходник интерфейса: files\VoiceFix.cs
+Engine source and full notes / Скрипты и подробности: files\engine\EN или RU
+No account, API key or network download is required by the helper.
+Помощнику не нужны аккаунт, API-ключ или загрузка из сети.
+It compiles the included interface source using Windows PowerShell/.NET.
+Интерфейс собирается из включённого исходника средствами Windows PowerShell/.NET.
+The game patch and warmup engine are the same as in the tested language kits.
+Патч игры и модуль подготовки кэша те же, что в проверенных языковых наборах.

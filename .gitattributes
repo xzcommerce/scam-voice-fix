@@ -1,0 +1,4 @@
+# Preserve the exact shipped script bytes: package manifests verify SHA-256.
+* -text
+* whitespace=cr-at-eol,-blank-at-eof
+*.patch binary

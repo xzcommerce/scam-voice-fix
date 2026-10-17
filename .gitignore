@@ -1,0 +1,12 @@
+.local/
+dist/
+*.log
+*.dll
+*.exe
+*.pdb
+*.wav
+*.gguf
+*.nupkg
+*.zip
+state.json
+*-results.json
