@@ -1,7 +1,7 @@
 param([string]$OutputZip='')
 $ErrorActionPreference='Stop'
 $repo=Split-Path -Parent $PSScriptRoot
-if(-not $OutputZip){$OutputZip=Join-Path $repo 'dist\Scam-Voice-Fix-GUI-25996926.zip'}
+if(-not $OutputZip){$OutputZip=Join-Path $repo 'dist\Scam-Voice-Fix-GUI-26003210.zip'}
 if(Test-Path -LiteralPath $OutputZip){throw 'Output already exists'}
 Add-Type -AssemblyName System.IO.Compression.FileSystem
 $parent=Split-Path -Parent ([IO.Path]::GetFullPath($OutputZip))

@@ -29,7 +29,7 @@ The two Mono.Cecil scripts modify `Kolkata.QwenTts.QwenWorkerClient`:
    - `__GL_SHADER_DISK_CACHE_SKIP_CLEANUP`
 3. Set `DISABLE_VK_LAYER_VALVE_steam_fossilize_1=1` and `DISABLE_VK_LAYER_VALVE_steam_overlay_1=1` in the same child environment.
 
-The patch leaves the five-second timeout, models, speech protocol and multiplayer routing unchanged. Disabling the Steam Vulkan layers alone did not fix the tested PC; the normal-cache warmup and NVIDIA environment cleanup were necessary parts of the successful setup.
+The patch leaves the seven-second timeout, models, speech protocol and multiplayer routing unchanged. Disabling the Steam Vulkan layers alone did not fix the tested PC; the normal-cache warmup and NVIDIA environment cleanup were necessary parts of the successful setup.
 
 There is no spoken-language condition in the worker-startup patch. Its mechanism can therefore apply to any language routed through Qwen, although the in-game listening test covered Russian only. The fixed Russian phrase in `Warmup.cs` is a preparation/test input; it does not change the language of later game calls. The installer's preference remains Qwen for non-English voices, not a forced change of provider for English.
 
@@ -37,7 +37,7 @@ There is no spoken-language condition in the worker-startup patch. Its mechanism
 
 ## Rebuild the DLL from source
 
-Use **Windows PowerShell 5.1 / .NET Framework**, your own original DLL from supported build 25996926, and its installed `Managed` folder for assembly resolution. If the fix is installed, use your saved original backup as the input. These scripts write to a new output directory and do not install anything.
+Use **Windows PowerShell 5.1 / .NET Framework**, your own original DLL from supported build 26003210, and its installed `Managed` folder for assembly resolution. If the fix is installed, use your saved original backup as the input. These scripts write to a new output directory and do not install anything.
 
 The developer-only dependency is [Mono.Cecil 0.11.6](https://www.nuget.org/packages/Mono.Cecil/0.11.6). Download its official NuGet package, extract it as a ZIP, and use `lib/net40/Mono.Cecil.dll`. The end-user helper does not download or require Cecil.
 
@@ -53,18 +53,20 @@ SHA-256 values:
 
 ```text
 Original game DLL:
-53BD673F796EA21F8B1512C3F113E6BB1997CE62665AB3EF2C1A72B4BED490EC
+99791CF93EC829D4784EE514AB78EBA19E5E4A7EA841B291D979432A5C911D8F
 Patched game DLL:
-27C1332662B862A2DED30370D36294C20AEAAA9847260FDA4FF4DEA82B06312D
+49CF032B165A0775EFC1B093BC137C82A3E3DF3D899755BA360103E3D48F8A83
 Mono.Cecil 0.11.6 NuGet package:
 D2A23832AAA948BA9A01ACC42B5726E34C5F995958F1B30D45C0E7C70B3A72D5
 Mono.Cecil lib/net40/Mono.Cecil.dll:
 C41BDB9FFD3C5F6E17D2382C1012D73703E035E3F1100245FDD4E08C8DC6EB5B
-Previously shared GUI ZIP:
+Historical build 25996926 GUI ZIP (not the current package):
 3E909AB435EAA26D420A55A926120F0D6D80EDA8C8AF5DB21F3FEFB5A82C95BB
 ```
 
 The rebuild must match the patched DLL hash above exactly. The installer checks the same hash after reconstructing the binary delta. You can also inspect or decompile your own original/rebuilt DLLs to compare changes. No full game DLLs are distributed here.
+
+`tools/New-PatchDelta.ps1 -OriginalDll <original> -PatchedDll <rebuilt> -Output <new-file>` regenerates the version-specific binary delta from those verified inputs. The current release ZIP checksum is published alongside the download.
 
 ## Package and tests
 

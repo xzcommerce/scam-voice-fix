@@ -10,8 +10,8 @@ function Send-UiStage([string]$Stage){ if($ResultPath){Write-Host ('@@VOICEFIX:'
 Send-UiStage 'Checking'
 try {
     Write-Host ''
-    Write-Host 'SCAM WITH YOUR FRIENDS - ИСПРАВЛЕНИЕ РУССКОЙ ОЗВУЧКИ' -ForegroundColor Cyan
-    Write-Host 'Для Steam-сборки 25996926 / Windows x64 / видеокарт NVIDIA'
+    Write-Host 'SCAM WITH YOUR FRIENDS - ИСПРАВЛЕНИЕ ОЗВУЧКИ QWEN' -ForegroundColor Cyan
+    Write-Host 'Для Steam-сборки 26003210 / Windows x64 / видеокарт NVIDIA'
     Write-Host ''
     # Checksums detect an incomplete extraction or accidental file corruption.
     $checks=Get-Content -LiteralPath (Join-Path $PSScriptRoot 'checksums.json') -Raw | ConvertFrom-Json
@@ -117,7 +117,7 @@ try {
     Install-Fix $game $PSScriptRoot $backup
     $uiOutcome='Installed'
     Write-Host ''
-    Write-Host 'ГОТОВО. Запустите игру обычным способом через Steam и выберите русский язык звонков.' -ForegroundColor Green
+    Write-Host 'ГОТОВО. Запустите игру обычным способом через Steam и выберите нужный язык звонков.' -ForegroundColor Green
     Write-Host 'Qwen включён для языков кроме английского. Частота кадров игры ограничена до 60 FPS.'
     Write-Host 'Проверьте два ответа персонажей в игре. Скорость во время игры может отличаться от отдельного теста.'
     Write-Host ('Резервная копия и журналы: '+$backup)

@@ -1,4 +1,4 @@
-﻿GUI validation - 17 October 2026
+﻿GUI validation - build 26003210 - 17 October 2026
 
 The GUI uses the same Fix-Core.ps1, Warmup.cs, binary patch, runtime manifest
 and checksum manifest as each tested language kit. Exact file hashes match.
@@ -16,4 +16,4 @@ Checks completed:
 Native desktop automation was unavailable. These checks used direct rendering
 of the application's controls and its process controller; they were not a live
 mouse/keyboard walkthrough. High-DPI displays and other PCs have not been tested.
-The original patch already passed in-game Russian listening tests on this PC.
+The earlier build passed in-game listening tests. See the engine validation notes for this build.

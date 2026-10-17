@@ -5,7 +5,7 @@
  [Parameter(Mandatory=$true)][string]$ManagedDirectory
 )
 $ErrorActionPreference='Stop'
-if((Get-FileHash -LiteralPath $Source -Algorithm SHA256).Hash -ne '53BD673F796EA21F8B1512C3F113E6BB1997CE62665AB3EF2C1A72B4BED490EC'){throw 'Unsupported original DLL'}
+if((Get-FileHash -LiteralPath $Source -Algorithm SHA256).Hash -ne '99791CF93EC829D4784EE514AB78EBA19E5E4A7EA841B291D979432A5C911D8F'){throw 'Unsupported original DLL'}
 if(Test-Path -LiteralPath $Destination){throw 'Output already exists'}
 Add-Type -Path $CecilPath
 $resolver=[Mono.Cecil.DefaultAssemblyResolver]::new()

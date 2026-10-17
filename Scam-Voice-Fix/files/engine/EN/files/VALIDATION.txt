@@ -1,45 +1,28 @@
-﻿Validation on 17 October 2026
+﻿Validation: Steam build 26003210 / game 0.1.73 / 17 October 2026
 
-Underlying patch: confirmed working in the real game, Russian NPC calls, on
-RTX 3060 12 GB / Ryzen 7 PRO 3700 / 32 GB RAM. User heard fast, smooth speech.
-Game log confirmed Qwen replies completed without the five-second timeout.
+Test PC: RTX 3060 12 GB / Ryzen 7 PRO 3700 / 32 GB RAM.
+The new original DLL is backed up separately from the older game build.
 
-Installer tests ran against isolated copies of the game DLL and temporary
-registry settings. The following passed:
-- PowerShell parsing and C# helper compilation.
-- Running-game guard.
-- Exact reconstruction of the already-tested patched DLL SHA256.
-- Installation and repeated installation without overwriting the first backup.
-- Undo with absent settings and with existing settings (including FPS=-1).
-- Install/Undo rejection of an unknown or updated DLL, without overwriting it.
-- Rollback after a simulated settings-write failure.
-- Undo after Steam restores the same supported original DLL.
-- Rejection of truncated patch data before writing a game file.
-- Unicode and bracket-containing installation paths.
-- Auto-discovery of the real Steam library, including missing/offline libraries
-  and case differences between Steam's registered paths.
-- Read-only preflight of NVIDIA hardware, runtime, models and voice hashes.
+Passed:
+- Exact patched DLL rebuild from the published Mono.Cecil scripts.
+- Binary delta reconstructs the same verified DLL.
+- All eight isolated installer test groups: install, repeat install, undo,
+  unknown DLL rejection, failure rollback, truncated delta and Unicode paths.
+- English/Russian GUI compilation, layout bounds, read-only compatibility,
+  structured results and localized incomplete-package error recovery.
+- Installed runtime, downloaded models and standard reference voice hashes.
+- Official-worker preparation: first audio 0.941 seconds.
+- Second fresh worker: first audio 0.954 seconds, 3.695 seconds generation
+  for 6.640 seconds of audio (generation/playback ratio 0.557).
+- Actual installation on the test PC with original DLL/settings backup.
 
-The exact included warmup helper was run twice in separate fresh official
-Qwen worker processes. First audio: 1.061 and 1.017 seconds. Speech generation
-used about 0.74 and 0.75 seconds per second of output audio (faster than playback).
-This was measured on a cache that was already warm. The first-ever cold-cache
-path on another PC has not been measured with this installer; it permits up to
-three minutes per loading/generation stage before stopping.
+In-game check passed: two Qwen replies completed successfully, with first audio at 1.148 and 1.065 seconds, no timeout, and no cancellation. The player reported good speech. Generation/playback ratios: 0.804 to 0.891.
 
-No friend's PC, AMD/Intel GPU, multiplayer session or future game version has
-been validated. The installer measures a fresh worker before installing, but
-an in-game listening test is still required on each PC.
+Only the Qwen worker constructor, Load, Synthesize and stderr handler are
+modified; one diagnostic logger is added. Other method bodies are unchanged.
+The game's new seven-second deadline and buffering changes are preserved.
+All 25 official Qwen runtime files are unchanged from build 25996926.
+The worker still inherits Steam's NVIDIA cache overrides without this patch.
 
-Exact local DLL modifications:
-Kolkata.QwenTts.QwenWorkerClient constructor changes the child process's
-ProcessStartInfo.EnvironmentVariables before Process.Start:
-  Remove __GL_SHADER_DISK_CACHE_PATH
-  Remove __GL_SHADER_DISK_CACHE_APP_NAME
-  Remove __GL_SHADER_DISK_CACHE_READ_ONLY_APP_NAME
-  Remove __GL_SHADER_DISK_CACHE_SKIP_CLEANUP
-  Set DISABLE_VK_LAYER_VALVE_steam_fossilize_1=1
-  Set DISABLE_VK_LAYER_VALVE_steam_overlay_1=1
-Diagnostic logging forwards previously ignored child stderr to Unity's log,
-and logs model load/synthesis request writes with UTC timestamps.
-The game timeout, models, speech protocol and multiplayer routing are unchanged.
+The cache was already warm. Other PCs, multiplayer, cold-cache performance
+on other hardware and future builds have not been validated.

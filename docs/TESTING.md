@@ -1,6 +1,10 @@
 # Test notes
 
-## Observed game behavior
+## Current build 26003210
+
+See [the update audit](UPDATE-26003210.md) for current compatibility, test results and in-game validation status. The following measurements are historical results from build 25996926 and should not be mistaken for a new-build listening test.
+
+## Historical observed game behavior
 
 Game build: 25996926. PC: RTX 3060 12 GB, Ryzen 7 PRO 3700, 32 GB RAM. Russian NPC calls.
 

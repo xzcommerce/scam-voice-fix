@@ -5,7 +5,7 @@ ENGLISH
 2. Open the extracted folder and double-click START.cmd.
 3. Choose English or Русский at the top of the window.
 4. Close the game, then click Fix voice. Keep the window open until it finishes.
-5. Start the game through Steam, select Russian call language and try two replies.
+5. Start the game through Steam, select your call language and try two replies.
 
 Undo changes restores the original game file and previous Qwen/FPS settings.
 It becomes available after this installer creates a backup.
@@ -14,7 +14,7 @@ Details / copy log shows the messages to copy when asking for help.
 
 Keep the files folder beside START.cmd. Do not run from inside the ZIP.
 The helper finds Steam automatically. If asked, select your game folder.
-This is an unofficial fix for Steam build 25996926 on supported NVIDIA GPUs
+This is an unofficial fix for Steam build 26003210 on supported NVIDIA GPUs
 with at least 8 GB VRAM, about 16 GB system RAM and 6 GB free RAM.
 It prepares the speech cache, enables Qwen for non-English voices and sets
 a 60 FPS game cap. Original files and settings are backed up before changes.
@@ -27,7 +27,7 @@ Other PCs/hardware and multiplayer still need their own in-game listening test.
 2. Откройте распакованную папку и дважды нажмите START.cmd.
 3. Выберите English или Русский в верхней части окна.
 4. Закройте игру и нажмите «Исправить озвучку». Дождитесь завершения.
-5. Запустите игру через Steam, выберите русский язык звонков и проверьте два ответа.
+5. Запустите игру через Steam, выберите нужный язык звонков и проверьте два ответа.
 
 «Отменить изменения» восстанавливает исходный файл игры и прежние настройки
 Qwen/FPS. Кнопка доступна после создания резервной копии этим установщиком.
@@ -36,7 +36,7 @@ Qwen/FPS. Кнопка доступна после создания резерв
 
 Оставьте папку files рядом с START.cmd. Не запускайте прямо из архива.
 Помощник найдёт Steam автоматически. Если появится запрос, выберите папку игры.
-Это неофициальное исправление для Steam-сборки 25996926 и поддерживаемых NVIDIA
+Это неофициальное исправление для Steam-сборки 26003210 и поддерживаемых NVIDIA
 с минимум 8 ГБ видеопамяти, около 16 ГБ ОЗУ и 6 ГБ свободной ОЗУ.
 Оно подготавливает кэш, включает Qwen для иностранных языков и ограничивает
 игру до 60 FPS. Исходные файлы и настройки сохраняются перед изменениями.

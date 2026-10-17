@@ -1,7 +1,7 @@
 ﻿# Offline, version-specific installer. All game-file writes are hash guarded.
 Set-StrictMode -Version 2.0
-$script:OriginalHash = '53BD673F796EA21F8B1512C3F113E6BB1997CE62665AB3EF2C1A72B4BED490EC'
-$script:PatchedHash = '27C1332662B862A2DED30370D36294C20AEAAA9847260FDA4FF4DEA82B06312D'
+$script:OriginalHash = '99791CF93EC829D4784EE514AB78EBA19E5E4A7EA841B291D979432A5C911D8F'
+$script:PatchedHash = '49CF032B165A0775EFC1B093BC137C82A3E3DF3D899755BA360103E3D48F8A83'
 $script:PrefsKey = 'Software\Jatater Worldwide\Scam With Your Friends'
 $script:PreferenceNames = @('Kolkata.Qwen3Tts_h1324939569','Max FPS_h1315227636')
 
@@ -19,7 +19,7 @@ function Assert-Compatible([string]$Game) {
     if (-not (Test-Path -LiteralPath $dll)) { throw 'This folder does not contain Scam With Your Friends.' }
     $hash = Get-Hash $dll
     if ($hash -notin @($script:OriginalHash,$script:PatchedHash)) {
-        throw 'Your game version is different or already has another mod. This fix supports build 25996926 only. No game files were changed. Ask for an updated fix.'
+        throw 'Your game version is different or already has another mod. This fix supports build 26003210 only. No game files were changed. Ask for an updated fix.'
     }
     return $hash
 }
@@ -62,7 +62,7 @@ function Find-Game {
 function Get-BackupDirectory([string]$Game) {
     $sha = [Security.Cryptography.SHA256]::Create()
     try { $id = [BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($Game.ToLowerInvariant()))).Replace('-','').Substring(0,16) } finally { $sha.Dispose() }
-    Join-Path $env:LOCALAPPDATA ("ScamVoiceFix\25996926-" + $id)
+    Join-Path $env:LOCALAPPDATA ("ScamVoiceFix\26003210-" + $id)
 }
 function Read-Preferences {
     $key = [Microsoft.Win32.Registry]::CurrentUser.OpenSubKey($script:PrefsKey)
@@ -107,7 +107,7 @@ function New-PatchedFile([string]$Original,[string]$Delta,[string]$Output) {
     try {
         if ([Text.Encoding]::ASCII.GetString($reader.ReadBytes(8)) -ne 'QWENFIX1') { throw 'Damaged patch.' }
         $length = $reader.ReadInt32()
-        if ($length -ne 2915328) { throw 'Damaged patch length.' }
+        if ($length -ne 2950656) { throw 'Damaged patch length.' }
         $bytes = New-Object byte[] $length
         $originalBytes = [IO.File]::ReadAllBytes($Original)
         [Array]::Copy($originalBytes,$bytes,[Math]::Min($originalBytes.Length,$length))

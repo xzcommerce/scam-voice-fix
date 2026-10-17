@@ -10,26 +10,28 @@ It addresses one specific Qwen/NVIDIA cache startup problem. It is an unofficial
 
 ## What happened
 
-Qwen took too long to produce its first audio when launched with Steam's NVIDIA shader-cache environment. After five seconds the game disabled Qwen and switched Russian speech to MOSS, which sounded slow and choppy on this PC.
+Qwen took too long to produce its first audio when launched with Steam's NVIDIA shader-cache environment. On the original tested build, after five seconds the game disabled Qwen and switched Russian speech to MOSS, which sounded slow and choppy on this PC.
 
-The relevant log message was:
+**Update 0.1.73 / build 26003210:** the developers increased the startup limit to seven seconds and improved speech buffering. Inspection of the installed build found the Qwen worker launch environment unchanged and all 25 Qwen runtime files identical to the previous supported build. This updated patch preserves the official seven-second limit and buffering changes while adding the worker cache workaround. [Build comparison and tests](docs/UPDATE-26003210.md).
+
+The current timeout message is:
 
 ```text
-First audio took more than five seconds; Qwen3 TTS disabled in settings.
+First audio took more than seven seconds; Qwen3 TTS disabled in settings.
 ```
 
 That message can have other causes too. On the tested PC, preparing the normal GPU cache and changing the Qwen worker's environment brought the first audio down to about **1.1 seconds in-game**, with smooth speech. This measures the speech-generation stage, not the entire conversation response time.
 
 ## Try it
 
-1. Download **Scam-Voice-Fix-GUI-25996926.zip** from [Releases](../../releases/latest).
+1. Download **Scam-Voice-Fix-GUI-26003210.zip** from [Releases](../../releases).
 2. Extract the entire ZIP and open the extracted folder.
 3. Close the game, run **START.cmd**, choose English or Русский, then click **Fix voice**.
 4. Wait for completion, start the game through Steam, and try two NPC replies in your chosen call language.
 
 **Undo changes** restores the original game DLL and previous Qwen/FPS preferences. **Check compatibility only** checks without changing game files or settings.
 
-Requirements: the exact supported Steam build **25996926**, Windows x64, a supported NVIDIA GPU with at least **8 GB VRAM**, about **16 GB system RAM**, at least **6 GB free RAM**, and the game's Qwen models already downloaded. Unknown DLL versions and conflicting modifications are rejected. Each affected player needs the fix locally; installing it on the host does not fix other clients.
+Requirements: the exact supported Steam build **26003210 (0.1.73)**, Windows x64, a supported NVIDIA GPU with at least **8 GB VRAM**, about **16 GB system RAM**, at least **6 GB free RAM**, and the game's Qwen models already downloaded. Unknown DLL versions and conflicting modifications are rejected. Each affected player needs the fix locally; installing it on the host does not fix other clients. The older build 25996926 ZIP remains in its own release; never use its DLL to replace a newer game DLL.
 
 ## What it changes
 
@@ -40,13 +42,13 @@ Requirements: the exact supported Steam build **25996926**, Windows x64, a suppo
 - Enables Qwen for non-English voices and caps the game at **60 FPS**.
 - Backs up the DLL and those two preferences under `%LOCALAPPDATA%\ScamVoiceFix`.
 
-The helper works offline, uses the already installed game runtime, and needs no account or API key. Its interface is compiled from the included C# source using Windows PowerShell/.NET. It does not alter the five-second timeout, speech models, multiplayer routing, or global environment variables. The launch scripts use a process-scoped PowerShell execution-policy bypass; they do not change the machine's saved policy.
+The helper works offline, uses the already installed game runtime, and needs no account or API key. Its interface is compiled from the included C# source using Windows PowerShell/.NET. It does not alter the game's seven-second timeout, speech models, multiplayer routing, or global environment variables. The launch scripts use a process-scoped PowerShell execution-policy bypass; they do not change the machine's saved policy.
 
 ## Review or rebuild
 
 Start with the [review guide](docs/REVIEW.md). The complete launch chain, installer, warmup helper, and **both scripts that generate the patched DLL** are available here. Reviewers can rebuild from their own supported original DLL and verify the output SHA-256 against the shipped patch.
 
-The source under [`Scam-Voice-Fix/`](Scam-Voice-Fix/) matches the previously shared GUI ZIP, file for file. No original/patched game DLLs, models, audio, personal logs, or account credentials are checked in. The version-specific binary delta is included; its generating changes are documented and rebuildable.
+The source under [`Scam-Voice-Fix/`](Scam-Voice-Fix/) corresponds to the build 26003210 ZIP. Each release tag preserves its matching source. No original/patched game DLLs, models, audio, personal logs, or account credentials are checked in. The version-specific binary delta is included; its generating changes are documented and rebuildable.
 
 ## Testing and limits
 

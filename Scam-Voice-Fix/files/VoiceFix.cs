@@ -124,18 +124,18 @@ namespace ScamVoiceFix {
         bool HasBackup(){
             try{
                 string folder=Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"ScamVoiceFix");
-                return Directory.Exists(folder)&&Directory.GetDirectories(folder,"25996926-*").Any(p=>File.Exists(Path.Combine(p,"state.json")));
+                return Directory.Exists(folder)&&Directory.GetDirectories(folder,"26003210-*").Any(p=>File.Exists(Path.Combine(p,"state.json")));
             }catch{return false;}
         }
         void Localize(){
-            headline.Text=T("Smooth Russian voices","Плавная русская озвучка");
+            headline.Text=T("Smooth Qwen voices","Плавная озвучка Qwen");
             subtitle.Text=T("One local fix. Play through Steam as usual.","Локальное исправление. Запускайте игру через Steam как обычно.");
             fix.Text=T("Fix voice","Исправить озвучку");undo.Text=T("Undo changes","Отменить изменения");
             check.Text=T("Check compatibility only","Проверить совместимость");
             details.Text=T("Details / copy log","Подробности / журнал");
             help.Text=T("How it works","Как это работает");
             changes.Text=T("Creates a backup, enables Qwen for non-English voices and sets a 60 FPS cap.","Создаёт резервную копию, включает Qwen для иностранных языков и ограничивает игру до 60 FPS.");
-            compatibility.Text=T("Unofficial helper  ·  Steam build 25996926  ·  NVIDIA 8 GB+  ·  16 GB system RAM", "Неофициальный помощник  ·  Сборка Steam 25996926  ·  NVIDIA от 8 ГБ  ·  ОЗУ 16 ГБ");
+            compatibility.Text=T("Unofficial helper  ·  Steam build 26003210  ·  NVIDIA 8 GB+  ·  16 GB system RAM", "Неофициальный помощник  ·  Сборка Steam 26003210  ·  NVIDIA от 8 ГБ  ·  ОЗУ 16 ГБ");
             undo.Enabled=HasBackup();
             RenderIdle();
         }
@@ -143,7 +143,7 @@ namespace ScamVoiceFix {
             progress.Visible=false;elapsed.Text="";stage.Text="";statusTitle.ForeColor=ink;
             if(lastOutcome=="Installed"){
                 statusTitle.Text=T("Ready to play","Можно играть");statusTitle.ForeColor=green;
-                message.Text=T("The fix is installed. Start the game through Steam, select Russian call language and try two NPC replies.","Исправление установлено. Запустите игру через Steam, выберите русский язык звонков и проверьте два ответа персонажей.");
+                message.Text=T("The fix is installed. Start the game through Steam, select your call language and try two NPC replies.","Исправление установлено. Запустите игру через Steam, выберите нужный язык звонков и проверьте два ответа персонажей.");
             }else if(lastOutcome=="Restored"){
                 statusTitle.Text=T("Original settings restored","Исходные настройки восстановлены");statusTitle.ForeColor=green;
                 message.Text=T("The original game file and your previous Qwen and FPS settings are restored. You can start the game through Steam.","Исходный файл игры и прежние настройки Qwen и FPS восстановлены. Можно запустить игру через Steam.");
@@ -252,8 +252,8 @@ namespace ScamVoiceFix {
         }
         void ShowHelp(){
             string text=T(
-                "Close the game and click Fix voice. The helper checks compatibility, prepares Qwen's local cache, measures speech speed and saves a backup before applying the fix.\r\n\r\nIt enables Qwen for non-English voices and sets a 60 FPS game cap. Start normally through Steam afterward and test two replies.\r\n\r\nUndo changes restores the original game file and your previous settings. It becomes available after this installer saves a backup.\r\n\r\nRequires the supported Steam build 25996926, NVIDIA graphics with at least 8 GB VRAM, about 16 GB RAM and 6 GB free RAM. Other versions and hardware need separate testing.\r\n\r\nEach affected player needs the fix on their own PC. Steam updates may replace the patch. A driver update or cache cleanup may require running Fix voice again.\r\n\r\nNo account or API key is needed. Source scripts and detailed instructions are in files/engine/EN.",
-                "Закройте игру и нажмите «Исправить озвучку». Помощник проверит совместимость, подготовит локальный кэш Qwen, измерит скорость и сохранит резервную копию перед установкой.\r\n\r\nОн включает Qwen для иностранных языков и ограничивает игру до 60 FPS. После установки запустите игру через Steam и проверьте два ответа.\r\n\r\nКнопка «Отменить изменения» восстанавливает исходный файл игры и прежние настройки. Она доступна после создания резервной копии этим установщиком.\r\n\r\nНужны сборка Steam 25996926, NVIDIA с минимум 8 ГБ видеопамяти, около 16 ГБ ОЗУ и 6 ГБ свободной ОЗУ. Другие версии и оборудование требуют отдельной проверки.\r\n\r\nКаждому игроку с проблемой нужно исправление на своём ПК. Обновления Steam могут заменить патч. После обновления драйвера или очистки кэша может понадобиться повторная подготовка.\r\n\r\nАккаунт и API-ключ не нужны. Исходные скрипты и подробная инструкция находятся в files/engine/RU.");
+                "Close the game and click Fix voice. The helper checks compatibility, prepares Qwen's local cache, measures speech speed and saves a backup before applying the fix.\r\n\r\nIt enables Qwen for non-English voices and sets a 60 FPS game cap. Start normally through Steam afterward and test two replies.\r\n\r\nUndo changes restores the original game file and your previous settings. It becomes available after this installer saves a backup.\r\n\r\nRequires the supported Steam build 26003210, NVIDIA graphics with at least 8 GB VRAM, about 16 GB RAM and 6 GB free RAM. Other versions and hardware need separate testing.\r\n\r\nEach affected player needs the fix on their own PC. Steam updates may replace the patch. A driver update or cache cleanup may require running Fix voice again.\r\n\r\nNo account or API key is needed. Source scripts and detailed instructions are in files/engine/EN.",
+                "Закройте игру и нажмите «Исправить озвучку». Помощник проверит совместимость, подготовит локальный кэш Qwen, измерит скорость и сохранит резервную копию перед установкой.\r\n\r\nОн включает Qwen для иностранных языков и ограничивает игру до 60 FPS. После установки запустите игру через Steam и проверьте два ответа.\r\n\r\nКнопка «Отменить изменения» восстанавливает исходный файл игры и прежние настройки. Она доступна после создания резервной копии этим установщиком.\r\n\r\nНужны сборка Steam 26003210, NVIDIA с минимум 8 ГБ видеопамяти, около 16 ГБ ОЗУ и 6 ГБ свободной ОЗУ. Другие версии и оборудование требуют отдельной проверки.\r\n\r\nКаждому игроку с проблемой нужно исправление на своём ПК. Обновления Steam могут заменить патч. После обновления драйвера или очистки кэша может понадобиться повторная подготовка.\r\n\r\nАккаунт и API-ключ не нужны. Исходные скрипты и подробная инструкция находятся в files/engine/RU.");
             MessageBox.Show(this,text,T("How it works","Как это работает"),MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
         public static void RunApp(string root){Application.EnableVisualStyles();Application.SetCompatibleTextRenderingDefault(false);Application.Run(new VoiceForm(root));}
