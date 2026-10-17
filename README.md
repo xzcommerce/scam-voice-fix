@@ -2,9 +2,11 @@
 
 [Русский](docs/README.ru.md) · [Download the English/Russian ZIP](../../releases/latest) · [Review the code](docs/REVIEW.md)
 
-This is the fix that made Russian NPC voices fast and smooth on my PC in **Scam With Your Friends**. I'm sharing the scripts and patch-generation code so people can inspect the changes themselves.
+This is a fix for slow or choppy NPC voices caused by a **Qwen/NVIDIA cache startup problem** in **Scam With Your Friends**. It made speech fast and smooth on my PC. I'm sharing the scripts and patch-generation code so people can inspect the changes themselves.
 
 It addresses one specific Qwen/NVIDIA cache startup problem. It is an unofficial community fix, not a general fix for every slow voice or AI reply.
+
+**Language scope:** the patch changes Qwen worker startup without checking the spoken language, so this issue could affect **any language the game generates through Qwen**. Russian was the language tested in-game; other languages have not been validated. Speech generated directly by Pocket TTS or MOSS needs a separate diagnosis. The installer enables Qwen for non-English voices; it does not force English calls to use Qwen.
 
 ## What happened
 
@@ -23,7 +25,7 @@ That message can have other causes too. On the tested PC, preparing the normal G
 1. Download **Scam-Voice-Fix-GUI-25996926.zip** from [Releases](../../releases/latest).
 2. Extract the entire ZIP and open the extracted folder.
 3. Close the game, run **START.cmd**, choose English or Русский, then click **Fix voice**.
-4. Wait for completion, start the game through Steam, and try two Russian NPC replies.
+4. Wait for completion, start the game through Steam, and try two NPC replies in your chosen call language.
 
 **Undo changes** restores the original game DLL and previous Qwen/FPS preferences. **Check compatibility only** checks without changing game files or settings.
 

@@ -31,6 +31,8 @@ The two Mono.Cecil scripts modify `Kolkata.QwenTts.QwenWorkerClient`:
 
 The patch leaves the five-second timeout, models, speech protocol and multiplayer routing unchanged. Disabling the Steam Vulkan layers alone did not fix the tested PC; the normal-cache warmup and NVIDIA environment cleanup were necessary parts of the successful setup.
 
+There is no spoken-language condition in the worker-startup patch. Its mechanism can therefore apply to any language routed through Qwen, although the in-game listening test covered Russian only. The fixed Russian phrase in `Warmup.cs` is a preparation/test input; it does not change the language of later game calls. The installer's preference remains Qwen for non-English voices, not a forced change of provider for English.
+
 `voice-fix.patch` is a binary delta, not executable source. `New-PatchedFile` reconstructs a DLL from the exact supported original and checks the full output hash before writing it. A checksum detects differences; by itself it is not proof of trust. The source rebuild below lets reviewers independently compare the result.
 
 ## Rebuild the DLL from source
